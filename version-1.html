@@ -4,8 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Profile Info</title>
+    <style>
+      .hide {display: none;}
+    </style>
   </head>
   <body>
-    
+    <h1>GitHub Profile Info</h1>
+    <form id="myFrm">
+      <label>
+        <strong>Username:</strong>
+        <input type="text" id="username" name="username" />
+      </label>
+      <input type="submit" value="Fetch" />
+    </form>
+    <div id="output" class="hide">
+      <h2>Profile Info</h2>
+      <ul>
+        <li>Name: <span id="name"></span></li>
+        <li>Username: <span id="uname"></span></li>
+        <li>Avatar: <img src="" alt="" id="avatar"></li>
+        <li><a href="" id="profileLink" target="_blank">Link to Profile</a></li>
+      </ul>
+    </div>
+    <script>
+      document.getElementById("myFrm").onsubmit = function (e) {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        alert("Form Submitted with " + username + "!");
+        document.getElementById("uname").textContent = username;
+        document.getElementById("profileLink").setAttribute("href", "https://github.com/" + username);
+        document.getElementById("output").classList.remove("hide");
+        return false;
+      }
+    </script>
   </body>
 </html>
